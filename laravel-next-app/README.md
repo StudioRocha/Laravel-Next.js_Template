@@ -53,6 +53,18 @@ php artisan key:generate
 
 ## フロントエンド（Next.js 側）セットアップ
 
+### 1. 環境ファイル作成
+
+`/next-frontend-app` のルートで `.env.local` を作成し、以下を保存:
+
+```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost/api
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=ランダムな長い文字列
+```
+
+### 2. 依存インストールと起動
+
 Next.js プロジェクトのディレクトリで実行:
 
 ```bash
