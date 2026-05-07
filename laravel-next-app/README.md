@@ -72,6 +72,33 @@ npm install
 npm run dev
 ```
 
+### 3. NextAuth セットアップ
+
+Next.js プロジェクトのディレクトリで実行:
+
+```bash
+npm install next-auth
+```
+
+`NEXTAUTH_SECRET` はプレースホルダのまま使わず、ランダム文字列に置き換えます。
+
+```bash
+openssl rand -base64 32
+```
+
+出力値を `.env.local` の `NEXTAUTH_SECRET=` に貼り付けてください。
+
+次に、NextAuth の API ルートを作成します。
+
+- `src/app/api/auth/[...nextauth]/route.ts`
+
+このテンプレートでは `CredentialsProvider` を使って Laravel 側の `/login` と `/api/user` を呼び、認証情報を `jwt` / `session` コールバックに引き渡す構成を想定します。
+
+認証状態をクライアント全体で参照する場合は、`SessionProvider` をルートレイアウト配下で有効化します。
+
+- `src/app/providers.tsx` で `SessionProvider` をラップ
+- `src/app/layout.tsx` で `Providers` を読み込み、`children` をラップ
+
 ## 開発コマンド（Laravel 側）
 
 ```bash
