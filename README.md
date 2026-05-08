@@ -51,6 +51,17 @@ php artisan key:generate
 ./vendor/bin/sail artisan migrate
 ```
 
+### 6. シーダー実行（テンプレート：登録済みをすべて投入）
+
+環境構築時は、マイグレーション後に **登録されているシーダーをまとめて実行** してください。  
+`DatabaseSeeder` の `$this->call([...])` に列挙されたクラスが順に実行されます（現状は `TestUserSeeder` と `ProductSeeder`）。
+
+```bash
+./vendor/bin/sail artisan db:seed
+```
+
+新しいシーダーを追加したら、`database/seeders/DatabaseSeeder.php` にクラス名を追記すると、上記コマンドで同じく一括実行の対象になります。
+
 ## フロントエンド（Next.js 側）セットアップ
 
 ### 1. 環境ファイル作成
@@ -75,6 +86,10 @@ npm run dev
 ### 3. NextAuth セットアップ
 
 Next.js プロジェクトのディレクトリで実行:
+
+```bash
+npm install next-auth
+```
 
 `NEXTAUTH_SECRET` はプレースホルダのまま使わず、ランダム文字列に置き換えます。
 
@@ -109,6 +124,7 @@ Sail 経由の例:
 
 ```bash
 ./vendor/bin/sail artisan test
+./vendor/bin/sail artisan db:seed
 ./vendor/bin/sail npm run dev
 ```
 
