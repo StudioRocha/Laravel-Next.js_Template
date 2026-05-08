@@ -10,7 +10,7 @@ export default function Header() {
 
     return (
         // 画面上部の共通ヘッダー
-        <header className="bg-white shadow-md">
+        <header className="bg-white text-gray-900 shadow-md">
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <Link href="/" className="text-xl font-bold text-gray-800">
                     MyApp
