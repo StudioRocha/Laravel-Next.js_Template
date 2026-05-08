@@ -76,10 +76,6 @@ npm run dev
 
 Next.js プロジェクトのディレクトリで実行:
 
-```bash
-npm install next-auth
-```
-
 `NEXTAUTH_SECRET` はプレースホルダのまま使わず、ランダム文字列に置き換えます。
 
 ```bash
